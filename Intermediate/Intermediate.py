@@ -49,12 +49,42 @@ class Question :
         self.q_answer = q_answer
 
 
+    
+class QuizBrain:
+    def __init__(self,q_list):
+        self.q_number = 0
+        self.score = 0
+        self.q_list = q_list
+        
+    def stillHasQuestions(self):
+        return  self.q_number<len(self.q_list)
+
+    
+    def nextQuestion(self):
+        current_question = self.q_list[self.q_number]
+        self.q_number +=1
+        user_answer = input(f"{self.q_number}:{current_question.q_text}(True/False):")
+        self.checkAnswer(user_answer,current_question.q_answer)
+        #print(f"Your current score is {self.score}/{self.q_number}")
+
+    def checkAnswer(self, user_answer,correct_answer):
+        if(user_answer.lower()==correct_answer.lower()):
+            print("Correct")
+            self.score +=1
+        else:
+            print(f"Wrong Answer! Correct Answer = {correct_answer}")
+
+
 question_bank = []
 for question in question_data :
     question_text = question["text"]
     question_answer = question["answer"]
     new_question = Question(question_text,question_answer)
     question_bank.append(new_question)
-print(len(question_bank))
-print(question_bank[0].q_answer)
-
+quiz = QuizBrain(question_bank)
+while quiz.stillHasQuestions(): 
+    quiz.nextQuestion()
+print("You have completed the quiz")
+print(f"Your final score was {quiz.score}/{quiz.q_number}")
+import webbrowser
+webbrowser.open("https://opentdb.com/api_config.php")
