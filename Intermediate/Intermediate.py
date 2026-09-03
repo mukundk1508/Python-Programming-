@@ -90,7 +90,7 @@ print(f"Your final score was {quiz.score}/{quiz.q_number}")
 import webbrowser
 webbrowser.open("https://opentdb.com/api_config.php")"""
 ###########################################################################################
-## Expresso Machine 
+## Expresso Machine using lists and dictionaries
 '''############################################################################################################
 ## TODO 1:- Print all the resourcess needed for coffee.                                                   ##
 ## TODO 2:- Printing the menue.                                                                           ##
@@ -229,4 +229,19 @@ if choice == "n":
 else:
     print("All right kool. Restart to run the coffee machine again ")'''
 ################################################################################################################################
-## High Low game :- 
+## SO you can install python packages or search for varuious python packages 
+## from the Pypi website also known as Python Package Index
+import webbrowser as webb
+#webb.open("https://pypi.org/")
+## depending on what the package is , if present in PyPi you can go ahead and pip install 
+## it in the terminal. once installed close VS code and open it again it should work
+from prettytable import PrettyTable## Here we are importing the table 
+table  = PrettyTable()## here we are creating an object of type PrettyTable
+table.add_column("Employee_name",["Mukund","Samuel","Raghava","Lakshmi","Caleb"])
+table.add_column("Occupations",["Backend Engineer","Data Engineer","RF Engineer","Lead Accountant","Youth Pastor"])
+table.add_column("Age",[25,27,21,48,29])
+table.align = 'r'
+print(table)
+table.align='l'
+print(table)
+## The Output is an ascii table with rows and columns
